@@ -48,7 +48,7 @@ class mqConsumer(mqConsumerInterface):
         # Acknowledge message
         channel.basic_ack(method_frame.delivery_tag, False)
         #Print message (The message is contained in the body parameter variable)
-        print("The message is contained in the body parameter variable")
+        print(body)
 
     def startConsuming(self) -> None:
         # Print " [*] Waiting for messages. To exit press CTRL+C"
