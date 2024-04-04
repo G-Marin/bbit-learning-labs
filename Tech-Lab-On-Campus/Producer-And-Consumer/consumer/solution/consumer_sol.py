@@ -42,6 +42,14 @@ class mqConsumer(mqConsumerInterface):
             self.queue_name, self.on_message_callback, auto_ack=False
         )
 
+    def on_message_callback(
+        self, channel, method_frame, header_frame, body
+    ) -> None:
+        # Acknowledge message
+        channel.basic_ack(method_frame.delivery_tag, False)
+        #Print message (The message is contained in the body parameter variable)
+        print("The message is contained in the body parameter variable")
+
     def startConsuming(self) -> None:
         # Print " [*] Waiting for messages. To exit press CTRL+C"
         print(" [*] Waiting for messages. To exit press CTRL+C")
